@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Behavior xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TTAirBehaviorSchema.xsd" Log="false" FilePathLog="./behavior.log">
+  <Interaction ID="101" ClassName="org.ttair.proccess.impl.RecognizerHandInFrontIMPL">
+    <Name>Hands together in front</Name>
+    <Description>reconhece Maos à frente</Description>
+  </Interaction>
+  <Interaction ID="102" ClassName="org.ttair.proccess.impl.RecognizerFaceIMPL">
+    <Name>Face de Usuário</Name>
+    <Description>reconhece face do usuário</Description>
+  </Interaction>
+  <Interaction ID="103" ClassName="org.ttair.proccess.impl.RecognizerMousePositionIMPL">
+    <Name>Mouse Position</Name>
+    <Description>Reconhece Posicao do Mouse</Description>
+  </Interaction>
+  <Action ID="201" ClassName="org.ttair.action.impl.ActionImpl">
+    <Name>ENVIAR IR POWER</Name>
+  </Action>
+  <Action ID="202" ClassName="org.ttair.action.impl.ActionImpl">
+    <Name>SEND SIGN IR OK</Name>
+  </Action>
+  <Action ID="203" ClassName="org.ttair.action.impl.ActionImpl">
+    <Name>SEND SIGN IR CH+</Name>
+  </Action>
+  <Action ID="204" ClassName="org.ttair.action.impl.ActionImpl">
+    <Name>SEND SIGN IR CH-</Name>
+  </Action>
+  <BehaviorFrame ID="BF01">
+    <Event ID="EVTBF01" RecognizerID="101" Cod="EVTHandInFront"/>
+    <ActionID>201</ActionID>
+    <ActionID>202</ActionID>
+  </BehaviorFrame>
+  <BehaviorFrame ID="BF02">
+    <Event ID="EVTBF02" RecognizerID="102" Cod="EVTFaceRecognized"/>
+    <ActionID>203</ActionID>
+    <ActionID>204</ActionID>
+  </BehaviorFrame>
+  <BehaviorFrame ID="BF03">
+    <Event ID="EVTBF03" RecognizerID="103" Cod="EVTMousePositionScreenLEFT_UP"/>
+    <ActionID>201</ActionID>
+    <ActionID>202</ActionID>
+  </BehaviorFrame>
+  <BehaviorFrame ID="BF04">
+    <Event ID="EVTBF04" RecognizerID="103" Cod="EVTMousePositionScreenRIGHT_UP"/>
+    <ActionID>203</ActionID>
+    <ActionID>204</ActionID>
+  </BehaviorFrame>
+  <Expectancy ID="Exp01">
+    <Name>Exp01</Name>
+    <BehaviorframeID>BF01</BehaviorframeID>
+  </Expectancy>
+  <Expectancy ID="Exp02">
+    <Name>Exp02</Name>
+    <BehaviorframeID>BF02</BehaviorframeID>
+  </Expectancy>
+  <Expectancy ID="ExpFINAL">
+    <Name>ExpFINAL</Name>
+    <BehaviorframeID>BF03</BehaviorframeID>
+    <BehaviorframeID>BF04</BehaviorframeID>
+  </Expectancy>
+  <BehaviorChain ID="BC001">
+    <ExpectancyID>Exp01</ExpectancyID>
+    <ExpectancyID>Exp02</ExpectancyID>
+    <ExpectancyID>ExpFINAL</ExpectancyID>
+    <ExpectancyTransition ID="ET0" Source="Exp01" Target="Exp02">
+      <CausedBy>BF01</CausedBy>
+    </ExpectancyTransition>
+    <ExpectancyTransition ID="ET1" Source="Exp02" Target="ExpFINAL">
+      <CausedBy>BF02</CausedBy>
+    </ExpectancyTransition>
+    <ExpectancyTransition ID="ET2" Source="ExpFINAL" Target="Exp01">
+      <CausedBy>BF03</CausedBy>
+    </ExpectancyTransition>
+    <ExpectancyTransition ID="ET3" Source="ExpFINAL" Target="Exp02">
+      <CausedBy>BF04</CausedBy>
+    </ExpectancyTransition>
+  </BehaviorChain>
+</Behavior>

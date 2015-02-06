@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Behavior xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="TTAirBehaviorSchema.xsd" ID="BH004" Log="true" FilePathLog="TTAirbehavior.log">
+  <Interaction ID="INT01" ClassName="org.ttair.proccess.impl.RecognizerUnit3D_C1_TV_ON">
+    <Name>AA01</Name>
+    <Description>XX01</Description>
+  </Interaction>
+  <Interaction ID="INT02" ClassName="org.ttair.proccess.impl.RecognizerUnit3D_C1_TV_OFF">
+    <Name>AA01</Name>
+    <Description>XX01</Description>
+  </Interaction>
+  <Action ID="ACT01" ClassName="org.ttair.action.impl.ActionC2LampON">
+    <Name>Acao ligar lampada</Name>
+    <Description>ACT 01</Description>
+  </Action>
+  <Action ID="ACT02" ClassName="org.ttair.action.impl.ActionC2LampOFF">
+    <Name>Acao desligar lampada</Name>
+    <Description>ACT 02</Description>
+  </Action>
+  
+  <BehaviorFrame ID="BF01">
+    <Name>Behavior Frame 01</Name>
+    <Event ID="EVT01" RecognizerID="INT01" Cod="SUCESS">
+      <Name>Evento de mãos para CIMA</Name>
+    </Event>
+    <ActionID>ACT01</ActionID>
+  </BehaviorFrame>
+  
+  <BehaviorFrame ID="BF02">
+  <Name>Behavior Frame 02</Name>
+    <Event ID="EVT02" RecognizerID="INT02" Cod="SUCESS">
+      <Name>MAO PRA BAIXO</Name>
+    </Event>
+    <ActionID>ACT02</ActionID>
+  </BehaviorFrame>
+  
+  <Expectancy ID="EXP01">
+  	<Name>Expectancy 01</Name>
+    <BehaviorframeID>BF01</BehaviorframeID>
+  </Expectancy>
+  <Expectancy ID="EXP02">
+  	<Name> Expectancy 02</Name>
+    <BehaviorframeID>BF02</BehaviorframeID>
+  </Expectancy>
+  
+  <BehaviorChain ID="BC001">
+    <Name>Bc LAMP</Name>
+    <Description>Behavior Chain de LAMP</Description>
+    <ExpectancyID>EXP01</ExpectancyID>
+    <ExpectancyID>EXP02</ExpectancyID>
+    <ExpectancyTransition ID="ETR01" Source="EXP01" Target="EXP02">
+      <CausedBy>BF01</CausedBy>
+    </ExpectancyTransition>
+    <ExpectancyTransition ID="ETR02" Source="EXP02" Target="EXP01">
+      <CausedBy>BF02</CausedBy>
+    </ExpectancyTransition>
+  </BehaviorChain>
+  
+
+</Behavior>

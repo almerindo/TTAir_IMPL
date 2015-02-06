@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Behavior xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="TTAirBehaviorSchema.xsd" ID="BH001" Log="true" FilePathLog="TTAirbehavior.log">
+    <!-- > ########## Lista de Interações mapeadas ##########</-->
+    <Interaction ID="INT01" ClassName="org.ttair.proccess.impl.RecognizerFaceIMPL">
+        <Name>Hands together in front</Name>
+    </Interaction>
+    <Interaction ID="INT02" ClassName="org.ttair.proccess.impl.RecognizerHandInFrontIMPL">
+        <Name>Hands left way</Name>
+    </Interaction>
+    <Interaction ID="INT03" ClassName="org.ttair.proccess.impl.RecognizerMousePositionIMPL">
+        <Name>Hands right way</Name>
+    </Interaction>
+    <Interaction ID="INT04" ClassName="org.ttair.proccess.impl.RecognizerMousePositionIMPL">
+        <Name>Mouse na esqueda</Name>
+        <Description>EVT04 é recebido quando o mouse é colocado ao lado esquerdo da tela</Description>
+    </Interaction>
+    <Interaction ID="INT05" ClassName="org.ttair.proccess.impl.RecognizerMousePositionIMPL">
+        <Name>Hands up way</Name>
+    </Interaction>
+    <Interaction ID="INT06" ClassName="org.ttair.proccess.impl.RecognizerMousePositionIMPL">
+        <Name>Hands down way</Name>
+    </Interaction>
+    <Interaction ID="INT07" ClassName="org.ttair.proccess.impl.RecognizerMousePositionIMPL">
+        <Name>Zoom hands together horizontally</Name>
+    </Interaction>
+    
+    <!-- > ########## Lista de Ações mapeadas ##########</-->
+    <Action ID="ACT01" ClassName="org.ttair.action.impl.ActionImpl">
+        <Name>IR POWER</Name>
+        <Description>Send sign IR Power</Description>
+    </Action>
+    <Action ID="ACT02" ClassName="org.ttair.action.impl.ActionImpl">
+        <Name>IR OK</Name>
+        <Description>Send sign IR OK</Description>
+    </Action>
+    <Action ID="ACT03" ClassName="org.ttair.action.impl.ActionImpl">
+        <Name>IR CH+</Name>
+        <Description>Send sign IR CH+</Description>
+    </Action>
+    <Action ID="ACT04" ClassName="org.ttair.action.impl.ActionImpl">
+        <Name>IR CH-</Name>
+        <Description>Send sign IR CH-</Description>
+    </Action>
+    <Action ID="ACT05" ClassName="org.ttair.action.impl.ActionImpl">
+        <Name>IR VOL+</Name>
+        <Description>Send sign IR VOL+</Description>
+    </Action>
+    <Action ID="ACT06" ClassName="org.ttair.action.impl.ActionImpl">
+        <Name>IR VOL-</Name>
+        <Description>Send sign IR VOL-</Description>
+    </Action>
+    <Action ID="ACT07" ClassName="org.ttair.action.impl.ActionImpl">
+        <Name>IR EPG</Name>
+        <Description>Send sign IR EPG - Eletronic Program Guide</Description>
+    </Action>
+    <Action ID="ACT08" ClassName="org.ttair.action.impl.ActionImpl">
+        <Name>Show icon</Name>
+        <Description>Show icon on screen</Description>
+    </Action>
+    
+    <!-- > ########## Lista de Behavior frames mapeados ##########</-->
+    <BehaviorFrame ID="BF01">
+        <Name>BF01</Name>
+        <Event ID="EVT01" RecognizerID="INT01" Cod="EVTFaceRecognized">
+      		<Name>Face reconhecida</Name>
+    	</Event>
+        <ActionID>ACT01</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    <BehaviorFrame ID="BF02">
+        <Name>BF02</Name>
+        <Event ID="EVT02" RecognizerID="INT02" Cod="EVTHandInFront">
+      		<Name>Mãos para Frente</Name>
+    	</Event>
+        <ActionID>ACT03</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    <BehaviorFrame ID="BF03">
+        <Name>BF03</Name>
+        <Event ID="EVT03" RecognizerID="INT03" Cod="EVTMousePositionScreenRIGHT_DOWN">
+      		<Name>Direita Baixo</Name>
+    	</Event>
+        <ActionID>ACT04</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    <BehaviorFrame ID="BF04">
+        <Name>BF04</Name>
+        <Event ID="EVT04" RecognizerID="INT05" Cod="EVTMousePositionScreenRIGHT_UP">
+      		<Name>Direita CIMA</Name>
+    	</Event>
+        <ActionID>ACT05</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    <BehaviorFrame ID="BF05">
+        <Name>BF05</Name>
+        <Event ID="EVT05" RecognizerID="INT06" Cod="EVTMousePositionScreenLEFT_UP">
+      		<Name>Esquerda CIMA</Name>
+    	</Event>
+        <ActionID>ACT06</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    <BehaviorFrame ID="BF06">
+        <Name>BF06</Name>
+         <Event ID="EVT06" RecognizerID="INT07" Cod="EVTMousePositionScreenLEFT_DOWN">
+      		<Name>Esquerda CIMA</Name>
+    	</Event>
+        <ActionID>ACT07</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    <BehaviorFrame ID="BF07">
+        <Name>BF07</Name>
+        <Event ID="EVT07" RecognizerID="INT04" Cod="EVTMousePositionScreenRIGHT_UP">
+      		<Name>Direita CIMA</Name>
+    	</Event>
+        <ActionID>ACT02</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    <BehaviorFrame ID="BF08">
+        <Name>BF08</Name>
+        <Event ID="EVT08" RecognizerID="INT05" Cod="EVTMousePositionScreenRIGHT_UP">
+      		<Name>Direita CIMA</Name>
+    	</Event>
+        <ActionID>ACT03</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    <BehaviorFrame ID="BF09">
+        <Name>BF09</Name>
+        <Event ID="EVT09" RecognizerID="INT06" Cod="EVTMousePositionScreenLEFT_UP">
+      		<Name>Esquerda CIMA</Name>
+    	</Event>
+        <ActionID>ACT04</ActionID>
+        <ActionID>ACT08</ActionID>
+    </BehaviorFrame>
+    
+    <!-- > ########## Lista de Expectancies (Expectancy ou contexto)  mapeadas ##########</-->
+    <Expectancy ID="exp01">
+        <Name>OFF TV</Name>
+        <Description>The TV is turned off</Description>
+        <BehaviorframeID>BF01</BehaviorframeID>
+    </Expectancy>
+    <Expectancy ID="exp02">
+        <Name>ON TV</Name>
+        <Description>The TV is turned on</Description>
+        <BehaviorframeID>BF01</BehaviorframeID>
+        <BehaviorframeID>BF02</BehaviorframeID>
+        <BehaviorframeID>BF03</BehaviorframeID>
+        <BehaviorframeID>BF04</BehaviorframeID>
+        <BehaviorframeID>BF05</BehaviorframeID>
+        <BehaviorframeID>BF06</BehaviorframeID>
+    </Expectancy>
+    <Expectancy ID="exp03">
+        <Name>EPG TV</Name>
+        <Description>The TV is showing the EPG</Description>
+        <BehaviorframeID>BF01</BehaviorframeID>
+        <BehaviorframeID>BF06</BehaviorframeID>
+        <BehaviorframeID>BF07</BehaviorframeID>
+        <BehaviorframeID>BF08</BehaviorframeID>
+        <BehaviorframeID>BF09</BehaviorframeID>
+    </Expectancy>
+    
+    
+        
+    <!-- > ########## BEHAVIOR CHAIN ##########</-->
+    <BehaviorChain ID="BC01">
+        <Name>TV Remote Control</Name>
+        <Description>Controlling the TV with manual Interactions</Description>
+        <ExpectancyID>exp01</ExpectancyID>
+        <ExpectancyID>exp02</ExpectancyID>
+        <ExpectancyID>exp03</ExpectancyID>
+        <!-- > ########## Lista de transições entre os contextos ou Expectancy(ies) ##########</-->
+        <ExpectancyTransition ID="ET001" Source="exp01" Target="exp02">
+         <CausedBy>BF01</CausedBy>
+        </ExpectancyTransition>
+        <ExpectancyTransition ID="ET002" Source="exp02" Target="exp01" >
+         <CausedBy>BF01</CausedBy>
+         </ExpectancyTransition>
+        <ExpectancyTransition ID="ET003" Source="exp03" Target="exp01">
+         <CausedBy>BF01</CausedBy>
+        </ExpectancyTransition>
+        <ExpectancyTransition ID="ET004" Source="exp02" Target="exp03">
+         <CausedBy>BF06</CausedBy>
+         </ExpectancyTransition>
+        <ExpectancyTransition ID="ET005" Source="exp03" Target="exp02">
+         <CausedBy>BF06</CausedBy>
+         <CausedBy>BF07</CausedBy>
+         </ExpectancyTransition>
+    </BehaviorChain>
+  
+</Behavior>
